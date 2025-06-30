@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>ARBIX HUB | Script Leak</title>
-</head>
-<body>
-<pre>
+--ARBIX HUB | Script Leak</title>
+
 local GuiScript = loadstring(game:HttpGet("https://raw.githubusercontent.com/Youifpg/U-ARE-MY-SUNSHINE/refs/heads/main/Gui.lua"))()
 
 local Window = GuiScript.MakeWindow({
@@ -70,8 +64,5 @@ RejoinSection.AddButton({
 })
 
 local FooterSection = MainTab.AddSection({
-    Name = "script made by touka (arbix hub owner)"
-})
-</pre>
-</body>
-</html>
+    Name = "script made by touka the retard (arbix hub owner)"
+
