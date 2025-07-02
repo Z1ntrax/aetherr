@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aether - Terms of Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg1: rgb(10, 10, 20);
+      --color-bg2: rgb(20, 20, 40);
+      --color1: 50, 80, 255;
+      --color2: 200, 70, 240;
+      --color3: 70, 200, 230;
+      --color4: 180, 60, 120;
+      --color5: 130, 160, 255;
+      --color-interactive: 140, 120, 240;
+      --circle-size: 80%;
+      --blending: screen;
+      --transition-speed: 0.6s;
+      --easing: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Inter', system-ui, sans-serif;
+      height: 100%;
+      background-color: var(--color-bg1);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    body {
+      overflow-y: auto;
+    }
+
+    .gradient-bg {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      overflow: hidden;
+      background: linear-gradient(210deg, var(--color-bg1), var(--color-bg2));
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .gradients-container {
+      filter: blur(45px);
+      width: 100%;
+      height: 100%;
+      opacity: 0.7;
+    }
+
+    .g1, .g2, .g3, .g4, .g5 {
+      position: absolute;
+      mix-blend-mode: var(--blending);
+      width: var(--circle-size);
+      height: var(--circle-size);
+      opacity: 0.7;
+      transition: background 1s ease;
+    }
+
+    .g1 {
+      background: radial-gradient(circle at center, rgba(var(--color1), 0.7) 0, rgba(var(--color1), 0) 50%) no-repeat;
+      top: calc(50% - var(--circle-size) / 2);
+      left: calc(50% - var(--circle-size) / 2);
+      transform-origin: center center;
+      animation: moveVertical 40s ease infinite;
+    }
+
+    .g2 {
+      background: radial-gradient(circle at center, rgba(var(--color2), 0.7) 0, rgba(var(--color2), 0) 50%) no-repeat;
+      top: calc(50% - var(--circle-size) / 2);
+      left: calc(50% - var(--circle-size) / 2);
+      transform-origin: calc(50% - 400px);
+      animation: moveInCircle 60s linear infinite;
+    }
+
+    .g3 {
+      background: radial-gradient(circle at center, rgba(var(--color3), 0.6) 0, rgba(var(--color3), 0) 50%) no-repeat;
+      top: calc(50% - var(--circle-size) / 2 + 200px);
+      left: calc(50% - var(--circle-size) / 2 - 500px);
+      transform-origin: calc(50% + 400px);
+      animation: moveInCircle 80s linear infinite;
+    }
+
+    .g4 {
+      background: radial-gradient(circle at center, rgba(var(--color4), 0.6) 0, rgba(var(--color4), 0) 50%) no-repeat;
+      top: calc(50% - var(--circle-size) / 2);
+      left: calc(50% - var(--circle-size) / 2);
+      transform-origin: calc(50% - 200px);
+      animation: moveHorizontal 60s ease infinite;
+    }
+
+    .g5 {
+      background: radial-gradient(circle at center, rgba(var(--color5), 0.5) 0, rgba(var(--color5), 0) 50%) no-repeat;
+      width: calc(var(--circle-size) * 2);
+      height: calc(var(--circle-size) * 2);
+      top: calc(50% - var(--circle-size));
+      left: calc(50% - var(--circle-size));
+      transform-origin: calc(50% - 800px) calc(50% + 200px);
+      animation: moveInCircle 120s ease infinite;
+    }
+
+    .interactive {
+      position: absolute;
+      background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.5) 0, rgba(var(--color-interactive), 0) 60%) no-repeat;
+      mix-blend-mode: var(--blending);
+      width: 100%;
+      height: 100%;
+      top: -50%;
+      left: -50%;
+      opacity: 0.3;
+      transition: all 0.5s var(--easing);
+    }
+
+    .logo {
+      position: fixed;
+      top: 32px;
+      left: 32px;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: white;
+      opacity: 0.8;
+      z-index: 200;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 32px;
+      right: 32px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      z-index: 200;
+      opacity: 0.8;
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.12);
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 120px auto 60px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      position: relative;
+      z-index: 100;
+      animation: fadeInUp 0.8s var(--easing);
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.005));
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 300;
+      margin-bottom: 32px;
+      text-align: center;
+      letter-spacing: -0.5px;
+      opacity: 0.95;
+      background: linear-gradient(135deg, rgba(var(--color2), 1), rgba(var(--color1), 1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section {
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeInUp 0.8s var(--easing) forwards;
+    }
+
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+    .section:nth-child(4) { animation-delay: 0.3s; }
+    .section:nth-child(5) { animation-delay: 0.4s; }
+    .section:nth-child(6) { animation-delay: 0.5s; }
+    .section:nth-child(7) { animation-delay: 0.6s; }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      opacity: 0.85;
+      font-weight: 400;
+    }
+
+    strong {
+      color: rgba(var(--color2), 1);
+      font-weight: 500;
+    }
+
+    .highlight-box {
+      background: rgba(var(--color-interactive), 0.08);
+      border: 1px solid rgba(var(--color-interactive), 0.15);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    .warning-box {
+      background: rgba(255, 100, 100, 0.08);
+      border: 1px solid rgba(255, 100, 100, 0.15);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    .warning-box strong {
+      color: rgba(255, 120, 120, 1);
+    }
+
+    footer {
+      max-width: 900px;
+      margin: 40px auto 60px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      font-weight: 400;
+      z-index: 100;
+      position: relative;
+    }
+
+    footer a {
+      color: rgba(var(--color2), 1);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .credits {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      z-index: 200;
+    }
+
+    @keyframes moveInCircle {
+      0% {
+        transform: rotate(0deg) translateX(20px) rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg) translateX(20px) rotate(-360deg);
+      }
+    }
+
+    @keyframes moveVertical {
+      0% {
+        transform: translateY(-20px);
+      }
+      50% {
+        transform: translateY(20px);
+      }
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes moveHorizontal {
+      0% {
+        transform: translateX(-20px);
+      }
+      50% {
+        transform: translateX(20px);
+      }
+      100% {
+        transform: translateX(-20px);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 100px 20px 40px;
+        padding: 30px 24px;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 24px;
+      }
+
+      .logo, .back-button {
+        top: 20px;
+      }
+
+      .logo {
+        left: 20px;
+      }
+
+      .back-button {
+        right: 20px;
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
+      .highlight-box, .warning-box {
+        padding: 20px;
+        margin: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="gradient-bg">
+    <div class="gradients-container">
+      <div class="g1"></div>
+      <div class="g2"></div>
+      <div class="g3"></div>
+      <div class="g4"></div>
+      <div class="g5"></div>
+      <div class="interactive"></div>
+    </div>
+  </div>
+
+  <div class="logo">Aether</div>
+  <a href="#" class="back-button">← Back to Hub</a>
+  <div class="credits">Credits: CatBypasser for design</div>
+
+  <div class="container">
+    <h1>Terms of Service</h1>
+    
+    <div class="section">
+      <p><strong>Aether</strong> and its designated subsidiaries ("we," or "us") provide users with innovative software solutions designed to enhance and personalize their experience. Our software is primarily developed to integrate with existing platforms, such as games, delivering unique features, improved functionality, and fostering community engagement.</p>
+    </div>
+
+    <div class="section warning-box">
+      <p><strong>Important Notice:</strong> Please be aware that we are not responsible for any account suspensions, damages, or other consequences that may result from your use of our software. By using our software or purchasing licenses, you agree to the following terms:</p>
+    </div>
+
+    <div class="section">
+      <p>We reserve the right to discontinue our services at any time, at our sole discretion, and may revoke any licenses granted to you with or without prior notice. As part of our services, we may collect certain user data, including but not limited to hardware IDs, IP addresses, and usernames.</p>
+    </div>
+
+    <div class="section highlight-box">
+      <p>The terms <strong>"Lifetime,"</strong> <strong>"Forever,"</strong> and related expressions refer to the period during which the service will be actively maintained, as determined solely by Aether. Additional fees may be charged to cover payment processing costs.</p>
+    </div>
+
+    <div class="section">
+      <p>You do not own the premium service; instead, you are granted a limited, non-transferable, and revocable license to use it under the conditions outlined in this agreement. Licenses hold no real-world monetary value.</p>
+    </div>
+
+    <div class="section warning-box">
+      <p><strong>Refund Policy:</strong> All license purchases, subscriptions, and payments are final and non-refundable unless otherwise determined by Aether at our discretion. By accepting these terms, you acknowledge that any refunds are granted solely at our discretion.</p>
+    </div>
+
+    <div class="section">
+      <p>We reserve the right to update or modify these Terms of Service (ToS) at any time, with or without prior notice. We are also not liable for any technical issues arising from system limitations or the use of unsupported executors or platforms.</p>
+    </div>
+  </div>
+
+  <footer>
+    Join our community on Discord: <a href="https://discord.gg/aetherhub" target="_blank" rel="noopener noreferrer">discord.gg/aetherhub</a><br />
+    Owned by Z1n / Z1ntrax / Hmizo / Hamzino
+  </footer>
+
+  <script>
+    // Interactive gradient following mouse movement
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+      
+      requestAnimationFrame(() => {
+        const interactive = document.querySelector('.interactive');
+        interactive.style.top = `${mouseY * 100 - 50}%`;
+        interactive.style.left = `${mouseX * 100 - 50}%`;
+      });
+    });
+
+    // Smooth scroll enhancement
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    // Add subtle parallax effect to sections
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const sections = document.querySelectorAll('.section');
+      
+      sections.forEach((section, index) => {
+        const rate = scrolled * -0.02 * (index + 1);
+        section.style.transform = `translateY(${rate}px)`;
+      });
+    });
+
+    // Enhanced hover effects for interactive elements
+    const interactiveElements = document.querySelectorAll('.back-button, footer a');
+    
+    interactiveElements.forEach(element => {
+      element.addEventListener('mouseenter', () => {
+        element.style.filter = 'brightness(1.1)';
+      });
+      
+      element.addEventListener('mouseleave', () => {
+        element.style.filter = 'brightness(1)';
+      });
+    });
+  </script>
+</body>
+</html>
