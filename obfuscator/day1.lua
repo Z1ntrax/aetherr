@@ -1,5 +1,7 @@
 
 --[[
+                              04/07/2025
+
 Day 1 of making this obfuscator very simple base will work out from here 
 TODO : ANTI TAMPER, STRING ENCRYPT
 ]] 
