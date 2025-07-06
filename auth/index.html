@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Key Validator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f5;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .box {
+      background: white;
+      display: inline-block;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1>Validate API Key</h1>
+
+    <input type="text" id="apiKey" placeholder="Enter your API key" />
+    <br>
+    <button onclick="validateKey()">Validate</button>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    async function validateKey() {
+      const key = document.getElementById('apiKey').value.trim();
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = 'Checking...';
+
+      try {
+        const response = await fetch(`http://localhost:8080/validate_key?key=${key}`);
+        const data = await response.json();
+
+        if (data.status === "success") {
+          resultDiv.innerHTML = `<span class="success">${data.message}</span>`;
+        } else {
+          resultDiv.innerHTML = `<span class="error">${data.message}</span>`;
+        }
+      } catch (err) {
+        resultDiv.innerHTML = `<span class="error">Failed to reach the server.</span>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
