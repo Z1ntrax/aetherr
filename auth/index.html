@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>API Key Validator</title>
+  <title>Aetherr API Key System</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -48,7 +48,7 @@
 <body>
 
   <div class="box">
-    <h1>API Key Management</h1>
+    <h1>Aetherr API Key Portal</h1>
 
     <!-- Key generation section -->
     <div>
@@ -67,12 +67,14 @@
   </div>
 
   <script>
+    const BASE_URL = 'https://aetherr.fyi/auth';
+
     async function generateKey() {
       const resultDiv = document.getElementById('generatedKey');
       resultDiv.innerHTML = 'Generating new API key...';
 
       try {
-        const response = await fetch('http://localhost:8080/generate_key');
+        const response = await fetch(`${BASE_URL}/generate_key`);
         const data = await response.json();
 
         if (data.status === 'success') {
@@ -91,7 +93,7 @@
       resultDiv.innerHTML = 'Validating...';
 
       try {
-        const response = await fetch(`http://localhost:8080/validate_key?key=${key}`);
+        const response = await fetch(`${BASE_URL}/validate_key?key=${key}`);
         const data = await response.json();
 
         if (data.status === "success") {
