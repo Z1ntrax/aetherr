@@ -38,25 +38,57 @@
     .error {
       color: red;
     }
+
+    .api-key {
+      font-weight: bold;
+      color: #0073e6;
+    }
   </style>
 </head>
 <body>
 
   <div class="box">
-    <h1>Validate API Key</h1>
+    <h1>API Key Management</h1>
 
+    <!-- Key generation section -->
+    <div>
+      <button onclick="generateKey()">Generate API Key</button>
+      <p id="generatedKey"></p>
+    </div>
+
+    <hr>
+
+    <!-- Key validation section -->
     <input type="text" id="apiKey" placeholder="Enter your API key" />
     <br>
-    <button onclick="validateKey()">Validate</button>
+    <button onclick="validateKey()">Validate Key</button>
 
     <div id="result" class="result"></div>
   </div>
 
   <script>
+    async function generateKey() {
+      const resultDiv = document.getElementById('generatedKey');
+      resultDiv.innerHTML = 'Generating new API key...';
+
+      try {
+        const response = await fetch('http://localhost:8080/generate_key');
+        const data = await response.json();
+
+        if (data.status === 'success') {
+          resultDiv.innerHTML = `New API Key: <span class="api-key">${data.api_key}</span>`;
+        } else {
+          resultDiv.innerHTML = 'Error generating key. Please try again.';
+        }
+      } catch (err) {
+        resultDiv.innerHTML = 'Failed to generate key. Check server status.';
+      }
+    }
+
     async function validateKey() {
       const key = document.getElementById('apiKey').value.trim();
       const resultDiv = document.getElementById('result');
-      resultDiv.innerHTML = 'Checking...';
+      resultDiv.innerHTML = 'Validating...';
 
       try {
         const response = await fetch(`http://localhost:8080/validate_key?key=${key}`);
